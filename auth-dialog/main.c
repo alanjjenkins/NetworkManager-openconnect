@@ -878,7 +878,7 @@ static int validate_peer_cert(void *cbdata,
 #endif
 
 	certkey = g_strdup_printf ("certificate:%s:%d",
-				   openconnect_get_hostname(ui_data->vpninfo),
+				   openconnect_get_dnsname(ui_data->vpninfo),
 				   openconnect_get_port(ui_data->vpninfo));
 
 	accepted_hash = g_hash_table_lookup (ui_data->secrets, certkey);
@@ -1332,7 +1332,7 @@ static gboolean cookie_obtained(auth_ui_data *ui_data)
 		   by nm-openconnect-service to make the connection */
 		key = g_strdup (NM_OPENCONNECT_KEY_GATEWAY);
 		value = g_strdup_printf ("%s:%d",
-					 openconnect_get_hostname(ui_data->vpninfo),
+					 openconnect_get_dnsname(ui_data->vpninfo),
 					 openconnect_get_port(ui_data->vpninfo));
 		g_hash_table_insert (ui_data->secrets, key, value);
 
